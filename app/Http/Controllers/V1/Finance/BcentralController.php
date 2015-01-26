@@ -1,16 +1,16 @@
 <?php
 namespace App\Http\Controllers\V1\Finance;
 
+use App\Commands\V1\Finance\Bcentral\DailyIndexesCommand;
 use Config;
 use Cache;
 use GuzzleHttp;
-use Response;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\RestController;
 use App\Exceptions;
 use Illuminate\Http\Request;
 
-class BcentralController extends Controller
+class BcentralController extends RestController
 {
     /**
      * @var array
@@ -18,6 +18,11 @@ class BcentralController extends Controller
     protected $apiTasks = [
         'daily_indexes',
     ];
+
+    /**
+     * @var array
+     */
+    protected $config;
 
     /**
      * @var GuzzleHttp\Client;
@@ -29,6 +34,8 @@ class BcentralController extends Controller
      */
     public function __construct()
     {
+        parent::__construct();
+
         $this->client = new GuzzleHttp\Client();
         $this->client->setDefaultOption('verify', false);
     }
@@ -39,7 +46,7 @@ class BcentralController extends Controller
      */
     public function index(Request $request)
     {
-        $config     = Config::get('finance.bcentral');
+        $this->config   = Config::get('finance.bcentral');
 
         $task       = $request->get('task', 'daily_indexes');
         $methodTask = camel_case($task);
@@ -48,28 +55,55 @@ class BcentralController extends Controller
             return $this->error(trans('finance.bcentral.invalid_task', ['task' => $task]));
         }
 
-        $content = Cache::remember(
-            'finance_bcentral.content',
-            array_get($config, 'expire', 30),
-            function() use($config, $task) {
-                return $this->getServiceContent(
-                    array_get($config, "$task.service_url"),
-                    array_get($config, "$task.method", 'GET')
-                );
-            }
-        );
-
-        if (!$content) {
-            Cache::forget('finance_bcentral.content');
-            return $this->error(trans('finance.bcentral.http_client_error'));
+        try {
+            return $this->success($this->$methodTask($this->load($task)));
+        } catch (Exceptions\RestResponseErrorException $e) {
+            return $this->error($e->getMessage(), $e->getCode());
+        } catch (Exceptions\RestResponseFailException $e) {
+            return $this->error($e->getMessage(), $e->getCode());
         }
-
-        return $this->$methodTask($content);
 	}
 
+    /**
+     * @param $content
+     * @return mixed
+     */
     public function dailyIndexes($content)
     {
+        return $this->dispatch(new DailyIndexesCommand($content, $this->config));
+    }
 
+    /**
+     * Loads the the cached content
+     *
+     * @param $task
+     * @return bool|mixed
+     */
+    protected function load($task)
+    {
+        // Attempts to load from the cache
+
+        if (!Cache::has("finance_bcentral.$task.content")) {
+            $serviceUrl = array_get($this->config, "$task.service_url");
+            $method = array_get($this->config, "$task.method", 'GET');
+            // Query the content from the external source
+            $content = $this->getServiceContent($serviceUrl, $method);
+
+            if (!$content) {
+                Cache::forget("finance_bcentral.$task.content");
+                return false;
+            }
+
+            Cache::put(
+                "finance_bcentral.$task.content",
+                $content,
+                array_get($this->config, 'expire', 30)
+            );
+        } else {
+            $content = Cache::get("finance_bcentral.$task.content", false);
+        }
+
+        return $content;
     }
 
     /**
@@ -80,19 +114,44 @@ class BcentralController extends Controller
      */
     protected function getServiceContent($serviceUrl = null, $method = 'GET', $params = [])
     {
-        $method = strtolower($method);
         try {
-            /**
-             * @var GuzzleHttp\Transaction $response
-             */
-            $response = $this->client->$method($serviceUrl, [
-                'cookies' => true,
-            ]);
-            $code     = $response->getStatusCode();
-            if ($code != 200) {
-                $result = false;
+            if (!is_array($serviceUrl)) {
+                $config = [
+                    0 => [
+                        'url'    => $serviceUrl,
+                        'method' => strtolower($method),
+                        'params' => $params
+                    ]
+                ];
             } else {
-                $result = (string) $response->getBody();
+                $config = $serviceUrl;
+            }
+
+            $tmpResult = [];
+            foreach ($config as $key => $clientConfig) {
+                $clientUrl    = $clientConfig['url'];
+                $clientMethod = $clientConfig['method'];
+                $clientParams = isset($clientConfig['params']) ? $clientConfig['params'] : [];
+
+                /**
+                 * @var GuzzleHttp\Message\Response $response
+                 */
+                $response = $this->client->$clientMethod($clientUrl, array_merge([
+                    'cookies' => true,
+                ], $clientParams));
+
+                $code = $response->getStatusCode();
+                if ($code != 200) {
+                    $tmpResult[$key] = false;
+                } else {
+                    $tmpResult[$key] = (string)$response->getBody();
+                }
+            }
+
+            if (!is_array($serviceUrl)) {
+                $result = $tmpResult[0];
+            } else {
+                $result = $tmpResult;
             }
         } catch (\Exception $e) {
             $result = false;
@@ -101,6 +160,12 @@ class BcentralController extends Controller
         return $result;
     }
 
+    /**
+     * Handle REST Success response
+     *
+     * @param $data
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     protected function success($data)
     {
         return response()->json([
@@ -109,6 +174,13 @@ class BcentralController extends Controller
         ], 200);
     }
 
+    /**
+     * Handle REST Fail response
+     *
+     * @param $data
+     * @param int $code
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     protected function fail($data, $code = 400)
     {
         return response()->json([
@@ -117,6 +189,13 @@ class BcentralController extends Controller
         ], $code);
     }
 
+    /**
+     * Handle REST Error response
+     *
+     * @param $message
+     * @param int $code
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function error($message, $code = 500)
     {
         return response()->json([
