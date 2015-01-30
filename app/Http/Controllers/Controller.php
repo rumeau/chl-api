@@ -8,4 +8,8 @@ abstract class Controller extends BaseController {
 
 	use DispatchesCommands, ValidatesRequests;
 
+	public function missingMethod()
+	{
+		return view('404');
+	}
 }

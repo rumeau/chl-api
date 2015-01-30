@@ -12,5 +12,10 @@ use TestCase;
 
 class BcentralTest extends TestCase
 {
+    public function testServiceExits()
+    {
+        $response = $this->call('GET', '/api/v1/finance/bcentral');
 
+        $this->assertEquals(200, $response->getStatusCode());
+    }
 }

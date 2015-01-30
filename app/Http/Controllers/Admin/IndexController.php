@@ -6,9 +6,14 @@
  * Time: 13:12
  */
 
-namespace app\Http\Controllers\Admin;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 
-class IndexController {
-
+class IndexController extends Controller
+{
+    public function getIndex()
+    {
+        return view('admin.index.index');
+    }
 }

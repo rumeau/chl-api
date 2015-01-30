@@ -55,7 +55,13 @@ trait PaginableTrait
                 $query->orderBy('ot.' . $parts[2], $order);
                 $query->groupBy("$from.id");
             } else {
-                $query->orderBy($by, $order);
+                if (is_array($by)) {
+                    foreach ($by as $b) {
+                        $query->orderBy($b, $order);
+                    }
+                } else {
+                    $query->orderBy($by, $order);
+                }
             }
         }
 

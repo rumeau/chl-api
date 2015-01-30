@@ -1,8 +1,8 @@
 <?php
-namespace App\Handlers\Commands\V1\Finance\Bcentral;
+namespace App\Handlers\Commands\API\V1\Finance\Bcentral;
 
 use Cache;
-use App\Commands\V1\Finance\Bcentral\DailyIndexesCommand;
+use App\Commands\API\V1\Finance\Bcentral\DailyIndexesCommand;
 use Symfony\Component\DomCrawler\Crawler;
 
 /**

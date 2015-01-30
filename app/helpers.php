@@ -115,3 +115,12 @@ if (!function_exists('format_rut')) {
         return number_format($rut, 0, ',', '.') . '-' . strtoupper($dv);
     }
 }
+
+if (!function_exists('total_users')) {
+    /**
+     * @return int
+     */
+    function total_users() {
+        return \App\User::all()->count();
+    }
+}

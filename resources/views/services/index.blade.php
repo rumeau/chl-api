@@ -1,7 +1,12 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Jean
- * Date: 029 29 01 2015
- * Time: 14:03
- */
+@extends('app')
+
+@section('content')
+
+    <div class="container">
+        <div class="page-header">
+            <h1>{{ $service->title }}</h1>
+        </div>
+        {!! $service->body['html'] !!}
+    </div>
+
+@stop

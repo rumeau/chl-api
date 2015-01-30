@@ -1,4 +1,4 @@
-@extends('app')
+@extends('laouts.authy')
 
 @section('content')
 <div class="container-fluid">

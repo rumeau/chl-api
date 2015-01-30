@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5a7814b66590022bc0318a326b54a892",
+    "hash": "1135bbdfe7c5a24f48c5c703d0415267",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -209,6 +209,45 @@
                 "string"
             ],
             "time": "2015-01-01 18:34:57"
+        },
+        {
+            "name": "erusev/parsedown",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/erusev/parsedown.git",
+                "reference": "9da19c1108c39df9b42adc42e39b8371070652d0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/erusev/parsedown/zipball/9da19c1108c39df9b42adc42e39b8371070652d0",
+                "reference": "9da19c1108c39df9b42adc42e39b8371070652d0",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Parsedown": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Emanuil Rusev",
+                    "email": "hello@erusev.com",
+                    "homepage": "http://erusev.com"
+                }
+            ],
+            "description": "Parser for Markdown.",
+            "homepage": "http://parsedown.org",
+            "keywords": [
+                "markdown",
+                "parser"
+            ],
+            "time": "2015-01-24 13:01:47"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -458,6 +497,46 @@
                 "tokenizer"
             ],
             "time": "2015-01-10 01:09:28"
+        },
+        {
+            "name": "laracasts/flash",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laracasts/flash.git",
+                "reference": "b8805e314fc153c6ad0f3f7400230f15de296d26"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laracasts/flash/zipball/b8805e314fc153c6ad0f3f7400230f15de296d26",
+                "reference": "b8805e314fc153c6ad0f3f7400230f15de296d26",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.0",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "mockery/mockery": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Laracasts\\Flash": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeffrey Way",
+                    "email": "jeffrey@laracasts.com"
+                }
+            ],
+            "description": "Easy flash notifications",
+            "time": "2015-01-28 14:35:59"
         },
         {
             "name": "laravel/framework",
@@ -3093,6 +3172,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "erusev/parsedown": 20,
+        "laracasts/flash": 20,
         "barryvdh/laravel-ide-helper": 20
     },
     "prefer-stable": false,

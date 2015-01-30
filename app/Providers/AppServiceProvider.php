@@ -1,5 +1,6 @@
 <?php namespace App\Providers;
 
+use App\Content;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider {
@@ -11,7 +12,7 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		//
+		view()->share('services', Content::where('type', Content::CONTENT_TYPE_SERVICE)->get());
 	}
 
 	/**

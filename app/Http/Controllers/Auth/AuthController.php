@@ -1,9 +1,11 @@
 <?php namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Foundation\Http\FormRequest as Request;
 
 class AuthController extends Controller {
 
@@ -20,12 +22,13 @@ class AuthController extends Controller {
 
 	use AuthenticatesAndRegistersUsers;
 
+	protected $redirectTo = '/web/admin';
+
 	/**
 	 * Create a new authentication controller instance.
 	 *
-	 * @param  \Illuminate\Contracts\Auth\Guard  $auth
-	 * @param  \Illuminate\Contracts\Auth\Registrar  $registrar
-	 * @return void
+	 * @param Guard $auth
+	 * @param Registrar $registrar
 	 */
 	public function __construct(Guard $auth, Registrar $registrar)
 	{
@@ -33,6 +36,28 @@ class AuthController extends Controller {
 		$this->registrar = $registrar;
 
 		$this->middleware('guest', ['except' => 'getLogout']);
+		if (User::all()->count() > 0) {
+			$this->middleware('auth', ['only' => ['getRegister', 'postRegister']]);
+		}
 	}
 
+	/**
+	 * Handle a registration request for the application.
+	 *
+	 * @param  \Illuminate\Foundation\Http\FormRequest  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function postRegister(Request $request)
+	{
+		$validator = $this->registrar->validator($request->all());
+
+		if ($validator->fails())
+		{
+			$this->throwValidationException(
+				$request, $validator
+			);
+		}
+
+		return redirect($this->redirectPath());
+	}
 }

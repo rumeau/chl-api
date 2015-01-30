@@ -1,7 +1,7 @@
 <?php
-namespace App\Http\Controllers\V1\Finance;
+namespace App\Http\Controllers\API\V1\Finance;
 
-use App\Commands\V1\Finance\Bcentral\DailyIndexesCommand;
+use App\Commands\API\V1\Finance\Bcentral\DailyIndexesCommand;
 use Config;
 use Cache;
 use GuzzleHttp;
@@ -170,7 +170,7 @@ class BcentralController extends RestController
     {
         return response()->json([
             'status'    => 'success',
-            'message'   => $data
+            'data'      => $data
         ], 200);
     }
 
@@ -185,7 +185,7 @@ class BcentralController extends RestController
     {
         return response()->json([
             'status'    => 'fail',
-            'message'   => $data
+            'data'      => $data
         ], $code);
     }
 

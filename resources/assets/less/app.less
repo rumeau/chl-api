@@ -1,8 +1,41 @@
-@import "bootstrap/bootstrap";
+@import "../../assets/vendor/bootstrap/less/bootstrap";
+@import "../../assets/vendor/bootswatch/paper/variables";
+@import "../../assets/vendor/bootswatch/paper/bootswatch";
+@import "../../assets/vendor/fontawesome/less/font-awesome";
+@import (inline) "../../assets/vendor/highlightjs/styles/monokai_sublime.css";
 
 @btn-font-weight: 300;
 @font-family-sans-serif: "Roboto", Helvetica, Arial, sans-serif;
+@fa-font-path:        "/fonts";
 
+body {
+  padding-top: 70px;
+}
 body, label, .checkbox label {
 	font-weight: 300;
 }
+
+
+/**
+ * Markdown editor
+ */
+.md-editor {
+  > .md-preview {
+	padding: 10px;
+  }
+  > textarea {
+	padding: 10px;
+  }
+}
+
+.editor-container {
+  padding: 1px;
+  background-color: #fcfcfc;
+  border: 1px solid @input-border;
+  border-radius: @input-border-radius; // Note: This has no effect on <select>s in some browsers, due to the limited stylability of <select>s in CSS.
+  .box-shadow(inset 0 1px 1px rgba(0,0,0,.075));
+  .transition(~"border-color ease-in-out .15s, box-shadow ease-in-out .15s");
+}
+
+
+

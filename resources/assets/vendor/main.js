@@ -4,11 +4,27 @@
 
 
 $(function() {
-    var mdEditors = $('*[data-editor="epiceditor"]');
+    var mdEditors = $('*[data-editor="epiceditor"]'),
+        prettyfy = $('pre code[class^="language-"]');
 
     mdEditors.each(function(item) {
         var obj = $(this);
 
-        new EpicEditor(obj);
-    })
+        new EpicEditor({
+            basePath: '/epiceditor',
+            container: obj.prop('id') + '-container',
+            textarea: obj.prop('id'),
+            theme: {
+                editor: '/themes/editor/epic-light.css'
+            },
+            clientSideStorage: false
+        }).load();
+
+        obj.hide();
+    });
+
+    prettyfy.each(function(i, block) {
+        hljs.highlightBlock(block);
+    });
+
 });

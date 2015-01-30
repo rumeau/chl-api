@@ -1,5 +1,7 @@
-<?php namespace App\Providers;
+<?php
+namespace App\Providers;
 
+use App\Content;
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -24,7 +26,9 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-		//
+		$router->bind('service', function($value) {
+			return Content::where('type', Content::CONTENT_TYPE_SERVICE)->findOrFail($value);
+		});
 	}
 
 	/**
