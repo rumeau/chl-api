@@ -6,3 +6,4 @@ composer.phar
 database.sqlite
 /resources/assets/vendor/*
 /node_modules
+/public/*
