@@ -12,7 +12,7 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		view()->share('services', Content::where('type', Content::CONTENT_TYPE_SERVICE)->get());
+
 	}
 
 	/**

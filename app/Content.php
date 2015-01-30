@@ -50,4 +50,9 @@ class Content extends Model
      * @var array
      */
     protected $by = ['title', 'version'];
+
+    public static function routeBindService($value)
+    {
+        return Content::where('type', Content::CONTENT_TYPE_SERVICE)->findOrFail($value);
+    }
 }
