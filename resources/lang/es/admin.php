@@ -25,4 +25,7 @@ return [
     'date' => 'Fecha',
     'service_not_found' => 'No se ha encontrado el servicio solicitado',
     'service_edit_success' => 'El servicio ha sido modificado',
+    'delete' => 'Eliminar',
+    'delete_services' => 'Eliminar Servicio',
+    'delete_service_agree' => '<p class="text-center">Está seguro que desea eliminar el servicio <strong>:service</strong> del sistema. Los cambios no pueden deshacerse.</p>',
 ];
