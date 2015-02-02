@@ -1,0 +1,391 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="cache-control" CONTENT="no-cache">
+    <meta http-equiv="Cache-Control" content="no-store" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Expires" content="-1">
+
+    <!--meta name="viewport" content="orientation=portrait, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"-->
+    <!--meta name="viewport" content="width=device-width, orientation=portrait, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"-->
+
+    <script type="text/javascript">
+        var sessionLang = "esp";
+        var keepAliveUrl = 'http://si3.bcentral.cl/bdemovil/BDE/KeepAliveAJAX';
+        var mediaQuerisIe10 = '/bdemovil/Content/html/css/mediaqueries-ie10mobile.css';
+        var mediaQuerisIeX = '/bdemovil/Content/html/css/mediaqueries-ieXotro.css';
+        var mediaQueris = '/bdemovil/Content/html/css/mediaqueries.min2.css';
+        var uaa = navigator.userAgent.toLowerCase();
+        var ess4mini = uaa.indexOf("gt-i9195") > -1;
+
+        var codigoAnalytics = 'UA-26456613-11';
+
+
+    </script>
+
+    <!-- Include the CSS -->
+    <link href='/bdemovil/Content/html/css/bootstrap.min2.css' rel="stylesheet" />
+    <link href="/bdemovil/Content/html/css/estilos?v=tvhkMUaEaFZW6bZTQwVECmE_9Y79dAfTd2XD7hHO2sU1" rel="stylesheet"/>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <!--[if IE 9]>
+    <style type="text/css">
+        #wrap {height:100%}
+        /*#main .content {position: relative;top:0px !important;}*/
+        #main .content {position: absolute;}
+        #main .content {filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebebeb', endColorstr='#FFFFFF',GradientType=0 );}
+    </style>
+    <![endif]-->
+    <!--[if lte IE 8]>
+    <style type="text/css">
+        #wrap {display:table;height:100%}
+    </style>
+    <![endif]-->
+    <!-- Scripts -->
+    <script src="/bdemovil/Content/scripts/layoutc?v=YjcMdfMextTHqU5XThZehZKlMz5YqiXj38JrVBu1euY1"></script>
+
+    <script src="/bdemovil/Content/scripts/layout2?v=UPKsdOG9GIaF6BvehZAnmt2LfaHoJZavusvyYvIc_0s1"></script>
+
+    <script src="/bdemovil/Content/html/js/snap.min.js"></script>
+    <title>Banco Central</title>
+
+    <!-- webapp homescreen link -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="apple-touch-icon" sizes="36x36" href='/bdemovil/Content/html/img/ico-ld.png' />
+    <link rel="apple-touch-icon" sizes="57x57" href='/bdemovil/Content/html/img/ico-md.png' />
+    <link rel="apple-touch-icon" sizes="72x72" href='/bdemovil/Content/html/img/ico-hd.png' />
+    <link rel="apple-touch-icon" sizes="114x114" href='/bdemovil/Content/html/img/ico-xhd.png' />
+    <link rel="apple-touch-icon" sizes="144x144" href='/bdemovil/Content/html/img/ico-xxhd.png' />
+    <!-- /webapp homescreen link -->
+</head>
+<body>
+<div style="width: 100%;float: left;overflow-x: hidden;position: absolute;left: 0;top: 0;height: 100%;">
+    <!-- Primero va el menú principal que va oculto -->
+    <div class="snap-drawers hide">
+        <div class="snap-drawer snap-drawer-left active-drawer" id="left-drawer">
+            <div class="menuTitle">
+                <h2><text id="titleMenu"></text></h2>
+            </div>
+            <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="window.location.href = '/bdemovil/BDE/IndicadoresDiarios?menuId=MI&amp;parentMenuName=Indicadores%20diarios'">
+                                <div class="imageico">
+                                    <img src='/bdemovil/Content/html/img/ico-MI.png' class="img-responsive">
+                                </div>
+                                Indicadores diarios                                                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                                <div class="imageico">
+                                    <img src='/bdemovil/Content/html/img/ico-MS.png' class="img-responsive">
+                                </div>
+                                Series más consultadas                                                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="/bdemovil/BDE/Series/MOV_SC_TC1?nombreItem=D%C3%B3lar%20observado%20&amp;nombrePadre=Series%20m%C3%A1s%20consultadas&amp;idPadre=x&amp;parametroMenu=Index&amp;idMenuTree=MS1">D&#243;lar observado </a></li>
+                                <li><a href="/bdemovil/BDE/Series/MOV_SC_PR1?nombreItem=IPC%2C%20variaci%C3%B3n%20mensual&amp;nombrePadre=Series%20m%C3%A1s%20consultadas&amp;idPadre=x&amp;parametroMenu=Index&amp;idMenuTree=MS2">IPC, variaci&#243;n mensual</a></li>
+                                <li><a href="/bdemovil/BDE/Series/MOV_SC_CN6?nombreItem=PIB%2C%20variaci%C3%B3n%20anual&amp;nombrePadre=Series%20m%C3%A1s%20consultadas&amp;idPadre=x&amp;parametroMenu=Index&amp;idMenuTree=MS3">PIB, variaci&#243;n anual</a></li>
+                                <li><a href="/bdemovil/BDE/Series/MOV_SC_TI1?nombreItem=Tasa%20de%20pol%C3%ADtica%20monetaria%20%28TPM%29&amp;nombrePadre=Series%20m%C3%A1s%20consultadas&amp;idPadre=x&amp;parametroMenu=Index&amp;idMenuTree=MS4">Tasa de pol&#237;tica monetaria (TPM)</a></li>
+                                <li><a href="/bdemovil/BDE/Series/MOV_SC_CN1?nombreItem=IMACEC%2C%20variaci%C3%B3n%20anual&amp;nombrePadre=Series%20m%C3%A1s%20consultadas&amp;idPadre=x&amp;parametroMenu=Index&amp;idMenuTree=MS5">IMACEC, variaci&#243;n anual</a></li>
+                                <li><a href="/bdemovil/BDE/Series/MOV_SC_ML3?nombreItem=Tasa%20de%20desempleo&amp;nombrePadre=Series%20m%C3%A1s%20consultadas&amp;idPadre=x&amp;parametroMenu=Index&amp;idMenuTree=MS6">Tasa de desempleo</a></li>
+                                <li><a href="/bdemovil/BDE/Series/MOV_SC_SE9?nombreItem=Reservas%20internacionales%20%28millones%20de%20d%C3%B3lares%29&amp;nombrePadre=Series%20m%C3%A1s%20consultadas&amp;idPadre=x&amp;parametroMenu=Index&amp;idMenuTree=MS7">Reservas internacionales (millones de d&#243;lares)</a></li>
+                                <li><a href="/bdemovil/BDE/Series/MOV_SC_PR11?nombreItem=Unidad%20de%20Fomento%20%28UF%29&amp;nombrePadre=Series%20m%C3%A1s%20consultadas&amp;idPadre=x&amp;parametroMenu=Index&amp;idMenuTree=MS8">Unidad de Fomento (UF)</a></li>
+                                <li><a href="/bdemovil/BDE/Series/MOV_SC_PR12?nombreItem=Unidad%20tributaria%20mensual%20%28UTM%29&amp;nombrePadre=Series%20m%C3%A1s%20consultadas&amp;idPadre=x&amp;parametroMenu=Index&amp;idMenuTree=MS9">Unidad tributaria mensual (UTM)</a></li>
+                                <li><a href="/bdemovil/BDE/Series/MOV_SC_PR13?nombreItem=%C3%8Dndice%20de%20valor%20promedio%20%28IVP%29&amp;nombrePadre=Series%20m%C3%A1s%20consultadas&amp;idPadre=x&amp;parametroMenu=Index&amp;idMenuTree=MS10">&#205;ndice de valor promedio (IVP)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                                <div class="imageico">
+                                    <img src='/bdemovil/Content/html/img/ico-MB.png' class="img-responsive">
+                                </div>
+                                Base de datos                                                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul>
+                                <li><a href="/bdemovil/BDE/ViewCategoria?menuId=MB_CN&amp;parentMenuName=Cuentas%20nacionales">Cuentas nacionales</a></li>
+                                <li><a href="/bdemovil/BDE/ViewCategoria?menuId=MB_SE&amp;parentMenuName=Sector%20externo">Sector externo</a></li>
+                                <li><a href="/bdemovil/BDE/ViewCategoria?menuId=MB_PR&amp;parentMenuName=Precios">Precios</a></li>
+                                <li><a href="/bdemovil/BDE/ViewCategoria?menuId=MB_EI&amp;parentMenuName=Econom%C3%ADa%20internacional">Econom&#237;a internacional</a></li>
+                                <li><a href="/bdemovil/BDE/ViewCategoria?menuId=MB_EM&amp;parentMenuName=Estad%C3%ADsticas%20monetarias%20y%20financieras">Estad&#237;sticas monetarias y financieras</a></li>
+                                <li><a href="/bdemovil/BDE/ViewCategoria?menuId=MB_TI&amp;parentMenuName=Tasas%20de%20inter%C3%A9s">Tasas de inter&#233;s</a></li>
+                                <li><a href="/bdemovil/BDE/ViewCategoria?menuId=MB_TC&amp;parentMenuName=Tipos%20de%20cambio">Tipos de cambio</a></li>
+                                <li><a href="/bdemovil/BDE/ViewCategoria?menuId=MB_ML&amp;parentMenuName=Mercado%20laboral%20">Mercado laboral </a></li>
+                                <li><a href="/bdemovil/BDE/ViewCategoria?menuId=MB_IS&amp;parentMenuName=Indicadores%20sectoriales">Indicadores sectoriales</a></li>
+                                <li><a href="/bdemovil/BDE/ViewCategoria?menuId=MB_FP&amp;parentMenuName=Finanzas%20p%C3%BAblicas">Finanzas p&#250;blicas</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" onclick="window.location.href = '/bdemovil/BDE/ViewFavoritos?menuId=FA'">
+                                <div class="imageico">
+                                    <img src='/bdemovil/Content/html/img/ico-FA.png' class="img-responsive">
+                                </div>
+                                Favoritos                                                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" onclick="window.location.href = '/bdemovil/BDE/ViewTwitter?menuId=NO&amp;parentMenuName=Novedades'">
+                                <div class="imageico">
+                                    <img src='/bdemovil/Content/html/img/ico-NO.png' class="img-responsive">
+                                </div>
+                                Novedades                                                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSix" onclick="window.location.href = 'mailto:contacto_bdemovil@bcentral.cl?subject=Contacto BDE Móvil'">
+                                <div class="imageico">
+                                    <img src='/bdemovil/Content/html/img/ico-CO.png' class="img-responsive">
+                                </div>
+                                Contáctenos                                                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSix" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" onclick="window.location.href = '/bdemovil/BDE/CambioValorSession'">
+                                <div class="imageico">
+                                    <img src='/bdemovil/Content/html/img/ico-LA.png' class="img-responsive">
+                                </div>
+                                English                                                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSeven" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseEight" onclick="window.location.assign('http://si3.bcentral.cl/Siete');">
+                                <div class="imageico">
+                                    <img src='/bdemovil/Content/html/img/ico-DE.png' class="img-responsive">
+                                </div>
+                                Versión completa                                                                </a>
+                        </h4>
+                    </div>
+                    <div id="collapseEight" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <ul>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin menú -->
+    <!-- Contenido -->
+
+
+
+
+
+    <script>
+        var razorIcoCalendar = '/bdemovil/Content/html/img/ico_calendar.png';
+        var razorIndicadoresAction = '/bdemovil/BDE/IndicadoresDiarios?parentMenuName=Indicadores%20diarios' + '&fecha=';
+    </script>
+    <script src="/bdemovil/Content/scripts/indicadoresdiarios?v=h2BnDfmt-PV8szCMSSDj6zW7f4vFybIFgkzRz3ZD--81"></script>
+
+
+    <!-- div necesario para que todo el contenido sea desplazado -->
+    <div id="content" class="snap-content" >
+        <div id="wrap">
+            <div id="main">
+                <header class="header">
+                    <nav class="navbar navbar-default" role="navigation">
+                        <div class="navbar-header">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-xs-1 col-sm-1">
+                                        <button class="button trigger" id="toggle-left">
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>
+                                    <div class="col-xs-1 col-sm-2"></div>
+                                    <div class="col-xs-8 col-sm-6">
+                                        <a class="navbar-brand" href="/bdemovil/"><img src='/bdemovil/Content/html/img/logo.png' class="img-responsive"></a>
+                                    </div>
+                                    <div class="vmover col-xs-2 col-sm-3">
+                                        <a class="rArrow getDown hide" href="" id="rArrowH"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                </header>
+                <!-- content -->
+                <div class="content">
+                    <div class="container">
+                        <div class="col-xs-12">
+                            <div class="row">
+                                <div class="col-xs-12 border-btm">
+                                    <div class="col-xs-10 col-sm-11">
+                                        <h3><a style="color:#4a535d;" href="/bdemovil/"><img src='/bdemovil/Content/html/img/arrow.png' class="backBtn img-responsive" alt="arrow">Indicadores diarios <text>(30-ene-2015)</text></a></h3>
+                                    </div>
+                                    <div class="input-append date datepick-box col-xs-2 col-sm-1" data-control="datetimepicker">
+                                        <input type="hidden" placeholder="30-01-2015" id="inputFecha"><span class="add-on"><img class="pull-right img-responsive" src="/bdemovil/Content/html/img/ico_calendar.png" alt="..." title="..."></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--  tablas  -->
+                            <div class="row">
+                                <h4>Unidad de reajustabilidad</h4>
+                                <table class="tableUnits table">
+                                    <tbody>
+                                    <tr>
+                                        <td class="col-xs-5"><p>Unidad de Fomento (UF)</p></td>
+                                        <td class="col-xs-2 text-center"><p>24.560,33</p></td>
+                                        <td class="col-xs-3 text-center"><p>Pesos</p></td>
+                                        <td class="col-xs-1"><button type="button" style="padding:11px;" class="btn btn-primary btn-sm pull-right" onclick="window.location.href = '/bdemovil/BDE/Series/MOV_ID_IR1?nombreItem=Unidad%20de%20Fomento%20%28UF%29&amp;nombrePadre=Indicadores%20diarios&amp;parametroMenu=IndicadoresDiarios&amp;idMenuTree=MI_IR1'">Ver</button></td>
+                                    </tbody>
+                                </table>
+                                <h4>Tipos de cambio*</h4>
+                                <table class="tableUnits table">
+                                    <tbody>
+                                    <tr>
+                                        <td class="col-xs-5"><p>D&#243;lar observado </p></td>
+                                        <td class="col-xs-2 text-center"><p>626,48</p></td>
+                                        <td class="col-xs-3 text-center"><p>Pesos</p></td>
+                                        <td class="col-xs-1"><button type="button" style="padding:11px;" class="btn btn-primary btn-sm pull-right" onclick="window.location.href = '/bdemovil/BDE/Series/MOV_ID_TC1?nombreItem=D%C3%B3lar%20observado%20&amp;nombrePadre=Indicadores%20diarios&amp;parametroMenu=IndicadoresDiarios&amp;idMenuTree=MI_TC1'">Ver</button></td>
+                                    </tbody>
+                                </table>
+                                <table class="tableUnits table">
+                                    <tbody>
+                                    <tr>
+                                        <td class="col-xs-5"><p>Euro (pesos por euro)</p></td>
+                                        <td class="col-xs-2 text-center"><p>707,17</p></td>
+                                        <td class="col-xs-3 text-center"><p>Pesos</p></td>
+                                        <td class="col-xs-1"><button type="button" style="padding:11px;" class="btn btn-primary btn-sm pull-right" onclick="window.location.href = '/bdemovil/BDE/Series/MOV_ID_TC2?nombreItem=Euro%20%28pesos%20por%20euro%29&amp;nombrePadre=Indicadores%20diarios&amp;parametroMenu=IndicadoresDiarios&amp;idMenuTree=MI_TC2'">Ver</button></td>
+                                    </tbody>
+                                </table>
+                                <table class="tableUnits table">
+                                    <tbody>
+                                    <tr>
+                                        <td class="col-xs-5"><p>Euro (euros por d&#243;lar)</p></td>
+                                        <td class="col-xs-2 text-center"><p>0,8859</p></td>
+                                        <td class="col-xs-3 text-center"><p>D&#243;lar USA</p></td>
+                                        <td class="col-xs-1"><button type="button" style="padding:11px;" class="btn btn-primary btn-sm pull-right" onclick="window.location.href = '/bdemovil/BDE/Series/MOV_ID_PA1?nombreItem=Euro%20%28euros%20por%20d%C3%B3lar%29&amp;nombrePadre=Indicadores%20diarios&amp;parametroMenu=IndicadoresDiarios&amp;idMenuTree=MI_TC3'">Ver</button></td>
+                                    </tbody>
+                                </table>
+                                <h4>Precios materias primas*</h4>
+                                <table class="tableUnits table">
+                                    <tbody>
+                                    <tr>
+                                        <td class="col-xs-5"><p>Cobre (US$/libra)  </p></td>
+                                        <td class="col-xs-2 text-center"><p>2,50</p></td>
+                                        <td class="col-xs-3 text-center"><p>D&#243;lar USA</p></td>
+                                        <td class="col-xs-1"><button type="button" style="padding:11px;" class="btn btn-primary btn-sm pull-right" onclick="window.location.href = '/bdemovil/BDE/Series/MOV_ID_PR1?nombreItem=Cobre%20%28US%24%2Flibra%29%20%20&amp;nombrePadre=Indicadores%20diarios&amp;parametroMenu=IndicadoresDiarios&amp;idMenuTree=MI_PR1'">Ver</button></td>
+                                    </tbody>
+                                </table>
+                                <table class="tableUnits table">
+                                    <tbody>
+                                    <tr>
+                                        <td class="col-xs-5"><p>Oro (US$/ozt)  </p></td>
+                                        <td class="col-xs-2 text-center"><p>1.268,75</p></td>
+                                        <td class="col-xs-3 text-center"><p>D&#243;lar USA</p></td>
+                                        <td class="col-xs-1"><button type="button" style="padding:11px;" class="btn btn-primary btn-sm pull-right" onclick="window.location.href = '/bdemovil/BDE/Series/MOV_ID_PR2?nombreItem=Oro%20%28US%24%2Fozt%29%20%20&amp;nombrePadre=Indicadores%20diarios&amp;parametroMenu=IndicadoresDiarios&amp;idMenuTree=MI_PR2'">Ver</button></td>
+                                    </tbody>
+                                </table>
+                                <h4>Tasas de interés*</h4>
+                                <table class="tableUnits table">
+                                    <tbody>
+                                    <tr>
+                                        <td class="col-xs-5"><p>Tasa de pol&#237;tica monetaria (TPM)</p></td>
+                                        <td class="col-xs-2 text-center"><p>3,00</p></td>
+                                        <td class="col-xs-3 text-center"><p>Porcentaje</p></td>
+                                        <td class="col-xs-1"><button type="button" style="padding:11px;" class="btn btn-primary btn-sm pull-right" onclick="window.location.href = '/bdemovil/BDE/Series/MOV_ID_TI4?nombreItem=Tasa%20de%20pol%C3%ADtica%20monetaria%20%28TPM%29&amp;nombrePadre=Indicadores%20diarios&amp;parametroMenu=IndicadoresDiarios&amp;idMenuTree=MI_TI4'">Ver</button></td>
+                                    </tbody>
+                                </table>
+
+                                <h5>*: Para día no hábil, el valor corresponde al último dato disponible.</h5>
+                            </div>
+                            <!--  fin tablas  -->
+                        </div>
+                    </div>
+                    <footer id="footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="lang pull-right"><a href='' id="link"></a></div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </footer>
+
+
+                    <script>
+                        var sessionLang = "esp";
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Fin contenido -->
+</div>
+</body>
+</html>

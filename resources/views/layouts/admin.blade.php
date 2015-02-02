@@ -48,8 +48,14 @@
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ trans('web.url_github_repo') }}" class="navbar-brand"><i class="fa fa-github"></i></a></li>
-                <li><a href="{{ trans('web.url_twitter') }}" class="navbar-brand"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="{{ trans('web.url_github_repo') }}" class="navbar-brand" target="_blank"><i class="fa fa-github"></i></a></li>
+                <li><a href="{{ trans('web.url_twitter') }}" class="navbar-brand" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/auth/logout">Logout</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>

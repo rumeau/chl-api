@@ -20,7 +20,7 @@ class AllowOrigin implements Middleware
 		 * @var \Illuminate\Http\Response $response
 		 */
 		$response = $next($request);
-		$response->header('access-control-allow-origin','*');
+		$response->headers->set('access-control-allow-origin','*');
 
 		return $response;
 	}

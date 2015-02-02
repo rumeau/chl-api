@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\API\V1\Finance;
 
 use App\Commands\API\V1\Finance\Bcentral\DailyIndexesCommand;
+use App\Http\Responses\JsendResponse;
 use Config;
 use Cache;
 use GuzzleHttp;
@@ -55,12 +56,13 @@ class BcentralController extends RestController
             return $this->error(trans('finance.bcentral.invalid_task', ['task' => $task]));
         }
 
+        $response = new JsendResponse();
         try {
-            return $this->success($this->$methodTask($this->load($task)));
+            return $response->success($this->$methodTask($this->load($task)));
         } catch (Exceptions\RestResponseErrorException $e) {
-            return $this->error($e->getMessage(), $e->getCode());
+            return $response->error($e->getMessage(), $e->getCode());
         } catch (Exceptions\RestResponseFailException $e) {
-            return $this->error($e->getMessage(), $e->getCode());
+            return $response->fail($e->getMessage(), $e->getCode());
         }
 	}
 
@@ -158,49 +160,5 @@ class BcentralController extends RestController
         }
 
         return $result;
-    }
-
-    /**
-     * Handle REST Success response
-     *
-     * @param $data
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    protected function success($data)
-    {
-        return response()->json([
-            'status'    => 'success',
-            'data'      => $data
-        ], 200);
-    }
-
-    /**
-     * Handle REST Fail response
-     *
-     * @param $data
-     * @param int $code
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    protected function fail($data, $code = 400)
-    {
-        return response()->json([
-            'status'    => 'fail',
-            'data'      => $data
-        ], $code);
-    }
-
-    /**
-     * Handle REST Error response
-     *
-     * @param $message
-     * @param int $code
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function error($message, $code = 500)
-    {
-        return response()->json([
-            'status'    => $code,
-            'message'   => $message
-        ], $code);
     }
 }

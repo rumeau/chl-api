@@ -12,11 +12,21 @@ namespace App;
 use App\Paginator\PaginableTrait;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Content
+ * @package App
+ */
 class Content extends Model
 {
     use PaginableTrait;
 
+    /**
+     *
+     */
     const CONTENT_TYPE_SERVICE = 1;
+    /**
+     *
+     */
     const CONTENT_TYPE_BLOCK   = 2;
 
     /**
@@ -50,9 +60,4 @@ class Content extends Model
      * @var array
      */
     protected $by = ['title', 'version'];
-
-    public static function routeBindService($value)
-    {
-        return Content::where('type', Content::CONTENT_TYPE_SERVICE)->findOrFail($value);
-    }
 }

@@ -1,13 +1,18 @@
 <?php namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\User;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\Registrar;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-use Illuminate\Foundation\Http\FormRequest as Request;
 
-class AuthController extends Controller {
+/**
+ * Class AuthController
+ * @package App\Http\Controllers\Auth
+ */
+class AuthController extends Controller
+{
 
 	/*
 	|--------------------------------------------------------------------------
@@ -22,6 +27,9 @@ class AuthController extends Controller {
 
 	use AuthenticatesAndRegistersUsers;
 
+	/**
+	 * @var string
+     */
 	protected $redirectTo = '/web/admin';
 
 	/**
@@ -44,10 +52,10 @@ class AuthController extends Controller {
 	/**
 	 * Handle a registration request for the application.
 	 *
-	 * @param  \Illuminate\Foundation\Http\FormRequest  $request
-	 * @return \Illuminate\Http\Response
+	 * @param UserRequest $request
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
 	 */
-	public function postRegister(Request $request)
+	public function postRegister(UserRequest $request)
 	{
 		$validator = $this->registrar->validator($request->all());
 
@@ -57,6 +65,12 @@ class AuthController extends Controller {
 				$request, $validator
 			);
 		}
+
+		User::create([
+			'name' => $request->get('name'),
+			'email' => $request->get('email'),
+			'password' => bcrypt($request->get('password')),
+		]);
 
 		return redirect($this->redirectPath());
 	}

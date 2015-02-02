@@ -11,45 +11,36 @@
 |
 */
 
-Route::get('/', function() {
-	return redirect('/web');
-});
+Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/services/{service}', ['as' => 'services.view', 'uses' => 'ServicesController@getIndex']);
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
 
-Route::bind('service', function() {
 
-});
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+	Route::get('/', ['as' => 'admin', 'uses' => 'Admin\IndexController@getIndex']);
+	Route::get('/services', ['as' => 'services.index', 'uses' => 'Admin\ServicesController@getIndex']);
+	Route::get('/services/create', ['as' => 'services.create', 'uses' => 'Admin\ServicesController@getCreate']);
+	Route::post('/services/store', ['as' => 'services.store', 'uses' => 'Admin\ServicesController@postStore']);
+	Route::get('/services/edit/{service}', ['as' => 'services.edit', 'uses' => 'Admin\ServicesController@getEdit']);
+	Route::post('/services/update/{service}', ['as' => 'services.update', 'uses' => 'Admin\ServicesController@postUpdate']);
+	Route::get('/services/delete/{service}', ['as' => 'services.delete', 'uses' => 'Admin\ServicesController@getDelete']);
+	Route::post('/services/destroy/{service}', ['as' => 'services.destroy', 'uses' => 'Admin\ServicesController@postDestroy']);
 
-Route::group(['prefix' => 'web'], function() {
-	Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
-		Route::get('/', ['as' => 'admin', 'uses' => 'Admin\IndexController@getIndex']);
-		Route::get('/services', ['as' => 'services.index', 'uses' => 'Admin\ServicesController@getIndex']);
-		Route::get('/services/create', ['as' => 'services.create', 'uses' => 'Admin\ServicesController@getCreate']);
-		Route::post('/services/store', ['as' => 'services.store', 'uses' => 'Admin\ServicesController@postStore']);
-		Route::get('/services/edit/{service}', ['as' => 'services.edit', 'uses' => 'Admin\ServicesController@getEdit']);
-		Route::post('/services/update/{service}', ['as' => 'services.update', 'uses' => 'Admin\ServicesController@postUpdate']);
-		Route::get('/services/delete/{service}', ['as' => 'services.delete', 'uses' => 'Admin\ServicesController@getDelete']);
-		Route::post('/services/destroy/{service}', ['as' => 'services.destroy', 'uses' => 'Admin\ServicesController@postDestroy']);
+	Route::get('/blocks', ['as' => 'blocks.index', 'uses' => 'Admin\BlockController@getIndex']);
+	Route::get('/blocks/create', ['as' => 'blocks.create', 'uses' => 'Admin\BlockController@getCreate']);
+	Route::post('/blocks/store', ['as' => 'blocks.store', 'uses' => 'Admin\BlockController@postStore']);
+	Route::get('/blocks/edit/{block}', ['as' => 'blocks.edit', 'uses' => 'Admin\BlockController@getEdit']);
+	Route::post('/blocks/update/{block}', ['as' => 'blocks.update', 'uses' => 'Admin\BlockController@postUpdate']);
 
-		Route::get('/blocks', ['as' => 'blocks.index', 'uses' => 'Admin\BlockController@getIndex']);
-		Route::get('/blocks/create', ['as' => 'blocks.create', 'uses' => 'Admin\BlockController@getCreate']);
-		Route::post('/blocks/store', ['as' => 'blocks.store', 'uses' => 'Admin\BlockController@postStore']);
-		Route::get('/blocks/edit/{block}', ['as' => 'blocks.edit', 'uses' => 'Admin\BlockController@getEdit']);
-		Route::post('/blocks/update/{block}', ['as' => 'blocks.update', 'uses' => 'Admin\BlockController@postUpdate']);
-
-		Route::get('/users', ['as' => 'users.index', 'uses' => 'Admin\UsersController@getIndex']);
-		Route::get('/users/create', ['as' => 'users.create', 'uses' => 'Admin\UsersController@getCreate']);
-		Route::post('/users/store', ['as' => 'users.store', 'uses' => 'Admin\UsersController@postStore']);
-		Route::get('/users/edit/{user}', ['as' => 'users.edit', 'uses' => 'Admin\UsersController@getEdit']);
-		Route::post('/users/update/{user}', ['as' => 'users.update', 'uses' => 'Admin\UsersController@postUpdate']);
-	});
-
-	Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
-	Route::get('/services/{service}', ['as' => 'services.view', 'uses' => 'ServicesController@getIndex']);
+	Route::get('/users', ['as' => 'users.index', 'uses' => 'Admin\UsersController@getIndex']);
+	Route::get('/users/create', ['as' => 'users.create', 'uses' => 'Admin\UsersController@getCreate']);
+	Route::post('/users/store', ['as' => 'users.store', 'uses' => 'Admin\UsersController@postStore']);
+	Route::get('/users/edit/{user}', ['as' => 'users.edit', 'uses' => 'Admin\UsersController@getEdit']);
+	Route::post('/users/update/{user}', ['as' => 'users.update', 'uses' => 'Admin\UsersController@postUpdate']);
 });
 
 Route::group(array('prefix' => 'api/v1', 'before' => 'auth.basic'), function() {
