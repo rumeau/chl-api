@@ -8,7 +8,7 @@
             <h2>{{ trans('admin.edit_service') }}</h2>
         </div>
 
-        <form class="form-vertical" action="/web/admin/services/update/{{ $service->id }}" method="post">
+        <form class="form-vertical" action="{{ route('services.update', ['service' => $service]) }}" method="post">
             <input type="hidden" name="_token" value="{{ csrf_token() }}" />
 
             <!-- Title input -->
@@ -69,7 +69,7 @@
             </div>
 
             <div class="form-group">
-                <a class="btn btn-default" href="/web/admin/services">&larr; {{ trans('admin.cancel') }}</a>
+                <a class="btn btn-default" href="{{ route('services.index') }}">&larr; {{ trans('admin.cancel') }}</a>
                 <button type="submit" class="btn btn-primary">{{ trans('admin.save') }}</button>
             </div>
         </form>

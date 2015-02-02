@@ -60,4 +60,9 @@ class Content extends Model
      * @var array
      */
     protected $by = ['title', 'version'];
+
+    public function scopeServices($query)
+    {
+        return $query->where('type', self::CONTENT_TYPE_SERVICE)->get();
+    }
 }

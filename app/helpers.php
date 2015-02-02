@@ -124,3 +124,9 @@ if (!function_exists('total_users')) {
         return \App\User::all()->count();
     }
 }
+
+if (!function_exists('api_services')) {
+    function api_services() {
+        return \App\Content::services();
+    }
+}

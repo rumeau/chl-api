@@ -16,7 +16,7 @@ abstract class Controller extends BaseController {
 
 	public function __construct()
 	{
-		view()->share('services', Content::where('type', Content::CONTENT_TYPE_SERVICE)->get());
+		view()->share('services', api_services());
 	}
 
 	/**

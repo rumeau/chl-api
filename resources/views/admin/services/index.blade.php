@@ -9,7 +9,7 @@
         </div>
 
         <div class="btn-toolbar text-right">
-            <a class="btn btn-primary" href="/web/admin/services/create">
+            <a class="btn btn-primary" href="{{ route('services.create') }}">
                 <i class="fa fa-plus"></i> {{ trans('admin.new_service') }}
             </a>
         </div>
