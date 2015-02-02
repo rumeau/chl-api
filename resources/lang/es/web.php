@@ -14,6 +14,9 @@ return [
     'register' => 'Registrarse',
     'apis_available' => 'APIs Disponibles',
     'view' => 'Ver',
+    'delete' => 'Eliminar',
+    'delete_services' => 'Eliminar Servicio',
+    'delete_service_agree' => '<p class="text-center">Está seguro que desea eliminar el servicio <strong>:service</strong> del sistema. Los cambios no pueden deshacerse.</p>',
     'back_to_top' => 'Subir ^',
 
     'url_github_repo' => 'https://github.com/rumeau/chl-api',

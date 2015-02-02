@@ -58,7 +58,7 @@ class ServicesController extends Controller
 
 		\Flash::success(trans('admin.service_create_success'));
 
-		return redirect('/web/admin/services');
+		return redirect(route('services.index'));
 	}
 
 	/**

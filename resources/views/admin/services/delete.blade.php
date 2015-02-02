@@ -9,7 +9,7 @@
         </div>
 
         <div class="well">
-            <p class="text-center">{{ trans('admin.delete_service_agree', ['service' => $service->title]) }}</p>
+            {!! trans('admin.delete_service_agree', ['service' => $service->title]) !!}
 
             <form action="{{ route('services.destroy', ['service' => $service]) }}" method="post">
                 <p class="text-center">
